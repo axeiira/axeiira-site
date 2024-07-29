@@ -3,9 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      main: ["Myanmar"],
-      fredoka: ["Fredoka", "sans-serif"],
-      roboto: ["Roboto", "sans-serif"],
+      main: ["Nunito", "sans-serif"],
     },
     colors: {
       transparent: "transparent",

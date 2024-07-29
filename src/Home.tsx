@@ -40,7 +40,7 @@ export default function Home() {
       <main className="bg-main h-fit overflow-clip px-40 pt-10">
         <Navbar />
         <div className="h-fit grid text-center place-content-center mt-20">
-          <h1 className="text-white text-[96px] font-fredoka">Hello, I do</h1>
+          <h1 className="text-white text-[96px] font-main">Hello, I do</h1>
           <AnimatePresence mode="wait">
             <motion.div
               variants={variants}
