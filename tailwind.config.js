@@ -4,6 +4,8 @@ export default {
   theme: {
     fontFamily: {
       main: ["Myanmar"],
+      fredoka: ["Fredoka", "sans-serif"],
+      roboto: ["Roboto", "sans-serif"],
     },
     colors: {
       transparent: "transparent",
