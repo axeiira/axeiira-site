@@ -1,9 +1,17 @@
+import { QueryClient, QueryClientProvider } from "react-query";
+import { RouterProvider } from "react-router-dom";
+import router from "./pages/routes";
+
+const queryClient = new QueryClient();
+
 function App() {
   return (
     <>
-      <p>This is the axeiira-site</p>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
