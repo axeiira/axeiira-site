@@ -39,15 +39,15 @@ export default function Home() {
 
   return(
     <>
-      <main className="bg-main h-fit overflow-hidden lg:px-40 px-auto pt-10">
+      <main className="bg-main lg:h-fit h-screen overflow-hidden lg:px-40 lg:pt-10 pt-5">
         <Navbar />
-        <div className="h-fit grid text-center place-content-center mt-20">
+        <div className="h-fit grid text-center place-content-center lg:mt-28 mt-40 z-0">
           <motion.h1
             variants={homeText}
             initial="initial"
             animate="animate"
             exit="exit"
-            className="text-white lg:text-[96px] text-4xl font-main">
+            className="text-white lg:text-[96px] text-4xl font-main z-0">
               Hello, I do
           </motion.h1>
           <AnimatePresence mode="wait">
