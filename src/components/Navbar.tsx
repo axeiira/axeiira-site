@@ -1,93 +1,78 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { AnimatePresence, motion} from "framer-motion";
-import TypingAnimation from "./TypingAnimation";
 import { FaAlignJustify, FaChevronUp } from "react-icons/fa";
 
 export default function Navbar() {
   const [isClicked, setIsClicked] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
 
   const handleClick = () => {
-    setIsClicked(!isClicked)
-  }
+    setIsClicked(!isClicked);
+  };
 
-  return(
+  const closeMenu = () => {
+    setIsClicked(false);
+  };
+
+  return (
     <>
-      <div className="lg:block hidden w-auto lg:flex grid lg:ml-0 lg:justify-between text-2xl font-main lg:gap-0 px-5">
+      <div className="hidden w-auto items-center justify-between px-2 lg:flex">
         <Link to="/">
-          <p 
-            className="text-white"
-            onMouseEnter={() => setIsHovering(true)} 
-            onMouseLeave={() => setIsHovering(false)}>
-              <AnimatePresence initial={false} mode="wait">
-                <motion.span 
-                  initial={{ opacity: 0 }} 
-                  animate={{ opacity: 1 }} 
-                  exit={{ opacity: 0 }}
-                  key={isHovering ? 'hovering' : 'unhovering'}
-                  >
-                    {isHovering ? <TypingAnimation text="Rama Prawira" speed={120} /> : "@axeiira"}
-                </motion.span>
-              </AnimatePresence>
+          <p className="font-mono text-sm tracking-[0.24em] text-text transition duration-150 hover:text-accent">
+            AXEIIRA/01
           </p>
         </Link>
-        <div className="lg:flex lg:block hidden grid flex-column mx-auto lg:mx-0 lg:gap-24 gap-5">
+        <div className="hidden items-center gap-4 font-mono text-xs uppercase tracking-[0.2em] lg:flex">
           <Link to="/about">
-            <p className="hover:scale-110 text-white hover:text-green transition ease-in cursor-pointer">about</p>
+            <p className="rounded-md border border-line px-3 py-2 text-muted transition duration-150 hover:border-accent hover:text-accent">
+              about
+            </p>
           </Link>
           <Link to="/projects">
-            <p className="hover:scale-110 text-white hover:text-green transition ease-in cursor-pointer">projects</p>
+            <p className="rounded-md border border-line px-3 py-2 text-muted transition duration-150 hover:border-accent hover:text-accent">
+              projects
+            </p>
           </Link>
-          {/* <Link to="/"> */}
-            <p className="text-white cursor-not-allowed">blog</p>
-          {/* </Link> */}
+          <p className="cursor-not-allowed rounded-md border border-line px-3 py-2 text-muted/50">
+            blog
+          </p>
         </div>
       </div>
 
-      <div className="lg:hidden block z-10">
-        <div className="absolute left-6 top-10 transition ease-in cursor-pointer">
-          {isClicked ? <FaChevronUp onClick={handleClick} style={{ color: 'white', fontSize: '24px', strokeWidth: '2' }}/> : <FaAlignJustify onClick={handleClick} style={{ color: 'white', fontSize: '24px', strokeWidth: '2' }}/>}
+      <div className="relative block lg:hidden">
+        <button
+          type="button"
+          aria-label="Toggle navigation menu"
+          className="absolute left-0 top-0 cursor-pointer text-text transition duration-150 hover:text-accent"
+          onClick={handleClick}
+        >
+          {isClicked ? (
+            <FaChevronUp style={{ fontSize: "22px", strokeWidth: "2" }} />
+          ) : (
+            <FaAlignJustify style={{ fontSize: "22px", strokeWidth: "2" }} />
+          )}
+        </button>
+        <div className="pl-12 pt-0.5">
+          <Link to="/">
+            <p className="font-mono text-xs tracking-[0.24em] text-text">AXEIIRA/01</p>
+          </Link>
         </div>
         {isClicked && (
-            <>
-              <AnimatePresence initial={false} mode="wait">
-                <motion.div 
-                  className="w-auto h-[100vw] absolute top-16 left-0 right-0 grid text-center text-3xl font-main bg-main z-10 opacity-95 rounded-[50px]"
-                  >
-                  <Link to="/">
-                    <motion.p 
-                    className="hover:scale-110 text-white hover:text-green transition ease-in cursor-pointer z-10"
-                    >
-                      home
-                    </motion.p>
-                  </Link>
-                  <Link to="/about">
-                    <motion.p 
-                    className="hover:scale-110 text-white hover:text-green transition ease-in cursor-pointer z-10"
-                  >
-                      about
-                    </motion.p>
-                  </Link>
-                  <Link to="/projects">
-                    <motion.p 
-                    className="hover:scale-110 text-white hover:text-green transition ease-in cursor-pointer z-10"
-                    >
-                      projects
-                    </motion.p>
-                  </Link>
-                  {/* <Link to="/"> */}
-                    <motion.p 
-                    className="text-white cursor-not-allowed z-10"
-                    >
-                      blog
-                    </motion.p>
-                  {/* </Link> */}
-                </motion.div>
-              </AnimatePresence>
-            </>
-           )}
+          <div className="retro-panel absolute left-0 right-0 top-12 z-10 grid gap-3 px-4 py-5 text-center font-mono text-sm uppercase tracking-[0.18em]">
+            <Link to="/" onClick={closeMenu}>
+              <p className="rounded-md border border-line py-2 text-muted">home</p>
+            </Link>
+            <Link to="/about" onClick={closeMenu}>
+              <p className="rounded-md border border-line py-2 text-muted">about</p>
+            </Link>
+            <Link to="/projects" onClick={closeMenu}>
+              <p className="rounded-md border border-line py-2 text-muted">projects</p>
+            </Link>
+            <p className="cursor-not-allowed rounded-md border border-line py-2 text-muted/50">
+              blog
+            </p>
+          </div>
+        )}
       </div>
     </>
-  )
+  );
 }

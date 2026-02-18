@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useAnimation, Variants } from 'framer-motion';
+import React, { useEffect, useState } from "react";
 
 interface TypingAnimationProps {
   text: string;
@@ -7,25 +6,7 @@ interface TypingAnimationProps {
 }
 
 const TypingAnimation: React.FC<TypingAnimationProps> = ({ text, speed = 50 }) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const controls = useAnimation();
-
-  const textVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 }
-  };
-
-  const cursorVariants: Variants = {
-    blink: {
-      opacity: [0, 1, 0],
-      transition: {
-        duration: 0.7,
-        repeat: Infinity,
-        repeatType: 'reverse'
-      }
-    },
-    hidden: { opacity: 0 },
-  };
+  const [displayedText, setDisplayedText] = useState("");
 
   useEffect(() => {
     let currentIndex = 0;
@@ -35,30 +16,13 @@ const TypingAnimation: React.FC<TypingAnimationProps> = ({ text, speed = 50 }) =
         currentIndex++;
       } else {
         clearInterval(intervalId);
-        controls.start('visible');
       }
     }, speed);
 
     return () => clearInterval(intervalId);
-  }, [text, speed, controls]);
+  }, [text, speed]);
 
-  return (
-    <div style={{ display: 'inline-block' }}>
-      <motion.span
-        initial="visible"
-        animate={controls}
-        variants={textVariants}
-      >
-        {displayedText}
-      </motion.span>
-      <motion.span
-        variants={cursorVariants}
-        animate="hidden"
-      >
-        |
-      </motion.span>
-    </div>
-  );
+  return <span>{displayedText}</span>;
 };
 
 export default TypingAnimation;

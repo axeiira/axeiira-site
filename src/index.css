@@ -1,4 +1,82 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --retro-bg: #05080d;
+  --retro-surface: rgba(10, 18, 27, 0.72);
+  --retro-line: rgba(67, 255, 209, 0.28);
+  --retro-text: #e4eef7;
+  --retro-muted: #8aa0b4;
+  --retro-accent: #43ffd1;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--retro-text);
+  background: var(--retro-bg);
+  font-family: "Space Grotesk", sans-serif;
+}
+
+@layer components {
+  .retro-shell {
+    position: relative;
+    isolation: isolate;
+    background-image: radial-gradient(
+        120% 120% at 50% 0%,
+        rgba(67, 255, 209, 0.13) 0%,
+        rgba(5, 8, 13, 0) 44%
+      ),
+      linear-gradient(180deg, #05080d 0%, #03060a 100%);
+  }
+
+  .retro-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(rgba(23, 48, 69, 0.35) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(23, 48, 69, 0.35) 1px, transparent 1px);
+    background-size: 42px 42px;
+    opacity: 0.45;
+    z-index: 0;
+  }
+
+  .retro-shell > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .retro-panel {
+    background: var(--retro-surface);
+    border: 1px solid var(--retro-line);
+    border-radius: 0.5rem;
+  }
+
+  .retro-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    border: 1px solid var(--retro-line);
+    padding: 0.75rem 1.5rem;
+    color: var(--retro-text);
+    font-family: "IBM Plex Mono", monospace;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    transition: all 160ms ease;
+  }
+
+  .retro-button:hover {
+    border-color: rgba(67, 255, 209, 0.7);
+    background: rgba(67, 255, 209, 0.08);
+    transform: translateY(-1px);
+  }
+}
