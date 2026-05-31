@@ -12,6 +12,28 @@ import { profile, projects, work } from "./data/portfolio";
 
 type Theme = "dark" | "light";
 
+function usePrefersReducedMotion() {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    setPrefersReducedMotion(mediaQuery.matches);
+
+    const handleChange = () => {
+      setPrefersReducedMotion(mediaQuery.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, []);
+
+  return prefersReducedMotion;
+}
+
 function Section({
   title,
   children,
@@ -44,6 +66,60 @@ function InlineLink({ href, label }: { href: string; label: string }) {
   );
 }
 
+function AnimatedName({ name, alias }: { name: string; alias: string }) {
+  const [isAlias, setIsAlias] = useState(false);
+  const [displayText, setDisplayText] = useState(name);
+  const prefersReducedMotion = usePrefersReducedMotion();
+
+  useEffect(() => {
+    const targetText = isAlias ? alias : name;
+
+    if (prefersReducedMotion) {
+      setDisplayText(targetText);
+      return;
+    }
+
+    if (displayText === targetText) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      const sharedLength = [...displayText].findIndex(
+        (character, index) => character !== targetText[index],
+      );
+      const matchingLength = sharedLength === -1 ? Math.min(displayText.length, targetText.length) : sharedLength;
+
+      if (displayText.length > matchingLength) {
+        setDisplayText(displayText.slice(0, -1));
+        return;
+      }
+
+      setDisplayText(targetText.slice(0, displayText.length + 1));
+    }, 42);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [alias, displayText, isAlias, name, prefersReducedMotion]);
+
+  return (
+    <button
+      type="button"
+      onMouseEnter={() => setIsAlias(true)}
+      onMouseLeave={() => setIsAlias(false)}
+      onFocus={() => setIsAlias(true)}
+      onBlur={() => setIsAlias(false)}
+      className="inline-flex h-7 min-w-[22ch] items-center justify-start text-left text-lg font-bold leading-none text-primary transition hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-bg sm:h-8 sm:text-xl"
+      aria-label={`${name}, alias ${alias}`}
+    >
+      <span aria-hidden="true">{displayText}</span>
+      <span className="ml-0.5 inline-block w-[1ch] animate-pulse text-accent" aria-hidden="true">
+        _
+      </span>
+    </button>
+  );
+}
+
 function App() {
   const [theme, setTheme] = useState<Theme>("dark");
 
@@ -69,7 +145,9 @@ function App() {
       <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-[600px] flex-col justify-center gap-14">
         <header className="space-y-6 border-b border-divider pb-8">
           <div className="space-y-3">
-            <h1 className="text-lg font-bold text-primary sm:text-xl">{profile.name}</h1>
+            <h1 className="leading-none">
+              <AnimatedName name={profile.name} alias={profile.alias} />
+            </h1>
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted">
               <span className="inline-flex items-center gap-1.5">
                 <FiMapPin aria-hidden="true" />

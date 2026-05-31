@@ -1,5 +1,6 @@
 export const profile = {
   name: "Rama Prawira Suryanto",
+  alias: "axeiira",
   location: "jakarta, indonesia",
   availability: "ai engineer intern at leverate group",
   bioLead: "computer engineering student focused on",
@@ -11,7 +12,7 @@ export const profile = {
     company: "Leverate Group",
     href: "https://leverategroup.asia/",
     suffix:
-      "while continuing to build across ai, data science, and devops.",
+      "focusing on building across ai products, data science, and infrastructure.",
   },
   email: "mailto:ramaprawira727@gmail.com",
   github: "https://github.com/axeiira",
