@@ -88,7 +88,18 @@ function App() {
         </header>
 
         <Section title="currently">
-          <p className="leading-7 text-secondary">{profile.currently}</p>
+          <p className="leading-7 text-secondary">
+            {profile.currently.prefix}{" "}
+            <a
+              href={profile.currently.href}
+              target="_blank"
+              rel="noreferrer"
+              className="font-bold text-primary transition hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-bg"
+            >
+              {profile.currently.company}
+            </a>{" "}
+            {profile.currently.suffix}
+          </p>
         </Section>
 
         <Section title="work">

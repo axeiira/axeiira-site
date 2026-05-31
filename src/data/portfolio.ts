@@ -1,13 +1,18 @@
 export const profile = {
   name: "Rama Prawira Suryanto",
   location: "jakarta, indonesia",
-  availability: "available for selected work",
+  availability: "ai engineer intern at leverate group",
   bioLead: "computer engineering student focused on",
   bioHighlights: ["systems engineering", "data processing"],
   bioTail:
     "building automated infrastructure that turns data analysis into seamless user experiences.",
-  currently:
-    "working across ai, data science, and devops while studying computer engineering at institut teknologi sepuluh nopember.",
+  currently: {
+    prefix: "working as an ai engineer intern at",
+    company: "Leverate Group",
+    href: "https://leverategroup.asia/",
+    suffix:
+      "while continuing to build across ai, data science, and devops.",
+  },
   email: "mailto:ramaprawira727@gmail.com",
   github: "https://github.com/axeiira",
   cv: "/cv.pdf",
