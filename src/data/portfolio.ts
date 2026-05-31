@@ -1,44 +1,50 @@
 export const profile = {
   name: "Rama Prawira Suryanto",
-  location: "surabaya, indonesia",
+  location: "jakarta, indonesia",
   availability: "available for selected work",
   bioLead: "computer engineering student focused on",
-  bioHighlights: ["software development", "machine learning"],
+  bioHighlights: ["systems engineering", "data processing"],
   bioTail:
-    "building small, practical systems across web, ai, and connected devices.",
+    "building automated infrastructure that turns data analysis into seamless user experiences.",
   currently:
-    "studying computer engineering at institut teknologi sepuluh nopember and refining portfolio projects around web systems, ai tooling, and embedded experiments.",
-  email: "mailto:rama@example.com",
-  github: "https://github.com/axeiira",
+    "working across ai, data science, and devops while studying computer engineering at institut teknologi sepuluh nopember.",
+  email: "mailto:ramaprawira727@gmail.com",
+  github: "https://github.com/ramaprawira",
+  cv: "/cv.pdf",
 };
 
 export const work = [
   {
-    company: "personal lab",
-    role: "software and machine learning projects",
-    period: "2024 - now",
+    company: "pt mioto agung mobilitas",
+    role: "full-stack developer intern",
+    period: "2025",
   },
   {
-    company: "computer engineering student",
-    role: "institut teknologi sepuluh nopember",
-    period: "2022 - now",
+    company: "mage x",
+    role: "front-end web developer",
+    period: "2024",
+  },
+  {
+    company: "lab miot",
+    role: "basic programming practicum assistant",
+    period: "2024",
   },
 ];
 
 export const projects = [
   {
-    name: "portfolio system",
-    description: "minimal personal site for writing, work, and selected projects.",
-    year: "2026",
-  },
-  {
-    name: "ai tooling experiments",
-    description: "small prototypes around automation, language models, and vision workflows.",
-    year: "2026",
-  },
-  {
-    name: "embedded systems archive",
-    description: "hardware and internet-of-things experiments from coursework and personal builds.",
+    name: "indonesian stock news automation",
+    description: "automated stock news sentiment workflow using n8n and a fine-tuned indobert model.",
     year: "2025",
+  },
+  {
+    name: "autoreps",
+    description: "ai-powered squat correction app using mediapipe pose landmarks and real-time feedback.",
+    year: "2024",
+  },
+  {
+    name: "pneumonia classification",
+    description: "web-based x-ray pneumonia detection system built with python, tensorflow, and tensorflow.js.",
+    year: "2024",
   },
 ];

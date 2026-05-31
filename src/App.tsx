@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { FiGithub, FiMail, FiMapPin, FiMoon, FiSun } from "react-icons/fi";
+import { FiFileText, FiGithub, FiMail, FiMapPin, FiMoon, FiSun } from "react-icons/fi";
 import { profile, projects, work } from "./data/portfolio";
 
 type Theme = "dark" | "light";
@@ -102,6 +102,9 @@ function App() {
           </a>
           <a href={profile.github} aria-label="github" className="transition hover:text-primary">
             <FiGithub aria-hidden="true" />
+          </a>
+          <a href={profile.cv} aria-label="view cv" className="transition hover:text-primary">
+            <FiFileText aria-hidden="true" />
           </a>
         </footer>
       </div>
