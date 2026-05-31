@@ -3,6 +3,7 @@ import {
   FiArrowUpRight,
   FiFileText,
   FiGithub,
+  FiLinkedin,
   FiMail,
   FiMapPin,
   FiMoon,
@@ -120,6 +121,61 @@ function AnimatedName({ name, alias }: { name: string; alias: string }) {
   );
 }
 
+function ProjectsCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const visibleProjects = [
+    projects[currentIndex],
+    projects[(currentIndex + 1) % projects.length],
+  ];
+
+  const showPreviousProjects = () => {
+    setCurrentIndex((index) => (index === 0 ? projects.length - 1 : index - 1));
+  };
+
+  const showNextProjects = () => {
+    setCurrentIndex((index) => (index + 1) % projects.length);
+  };
+
+  return (
+    <div className="space-y-5">
+      <div className="space-y-5 transition-opacity duration-200" aria-live="polite">
+        {visibleProjects.map((project) => (
+          <article key={project.name} className="grid grid-cols-[1fr_auto] gap-4">
+            <div>
+              <h3 className="font-bold text-primary">{project.name}</h3>
+              <p className="mt-1 text-secondary">{project.description}</p>
+              <InlineLink href={project.href} label={`view ${project.name}`} />
+            </div>
+            <p className="pt-0.5 text-right text-xs text-muted">{project.year}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="flex items-center justify-between pt-1 text-xs text-muted">
+        <button
+          type="button"
+          onClick={showPreviousProjects}
+          className="transition hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-bg"
+          aria-label="show previous projects"
+        >
+          prev
+        </button>
+        <p aria-label={`project set ${currentIndex + 1} of ${projects.length}`}>
+          {String(currentIndex + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
+        </p>
+        <button
+          type="button"
+          onClick={showNextProjects}
+          className="transition hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-bg"
+          aria-label="show next projects"
+        >
+          next
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const [theme, setTheme] = useState<Theme>("dark");
 
@@ -195,19 +251,8 @@ function App() {
           </div>
         </Section>
 
-        <Section title="projects">
-          <div className="space-y-5">
-            {projects.map((project) => (
-              <article key={project.name} className="grid grid-cols-[1fr_auto] gap-4">
-                <div>
-                  <h3 className="font-bold text-primary">{project.name}</h3>
-                  <p className="mt-1 text-secondary">{project.description}</p>
-                  <InlineLink href={project.href} label={`view ${project.name}`} />
-                </div>
-                <p className="pt-0.5 text-right text-xs text-muted">{project.year}</p>
-              </article>
-            ))}
-          </div>
+        <Section title="personal projects">
+          <ProjectsCarousel />
         </Section>
 
         <footer className="flex justify-center gap-5 pt-2 text-muted">
@@ -228,6 +273,15 @@ function App() {
             className="transition hover:text-primary"
           >
             <FiGithub aria-hidden="true" />
+          </a>
+          <a
+            href={profile.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="linkedin"
+            className="transition hover:text-primary"
+          >
+            <FiLinkedin aria-hidden="true" />
           </a>
           <a
             href={profile.cv}

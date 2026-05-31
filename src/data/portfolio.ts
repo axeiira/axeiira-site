@@ -8,14 +8,15 @@ export const profile = {
   bioTail:
     "building automated infrastructure that turns data analysis into seamless user experiences.",
   currently: {
-    prefix: "working as an ai engineer intern at",
+    prefix: "working on-site as an ai engineer intern at",
     company: "Leverate Group",
     href: "https://leverategroup.asia/",
     suffix:
-      "focusing on building across ai products, data science, and infrastructure.",
+      "focusing on building across generative / agentic ai products, data science, and infrastructure.",
   },
   email: "mailto:ramaprawira727@gmail.com",
   github: "https://github.com/axeiira",
+  linkedin: "https://www.linkedin.com/in/rama-prawira/",
   cv: "/cv.pdf",
 };
 
@@ -59,4 +60,17 @@ export const projects = [
     year: "2024",
     href: "https://github.com/axeiira/pneumonia-web",
   },
+  {
+    name: "blackjack game with computer vision",
+    description: "app-based blackjack game built with python, opencv, and reinforcement learning.",
+    year: "2024",
+    href: "https://github.com/axeiira/Deep-Learning-Blackjack", 
+  },
+  {
+    name: "traffic signs classification",
+    description: "web-based traffic signs classification system built with python, tensorflow, and tensorflow.js.",
+    year: "2024",
+    href: "https://cloud-classification-web.vercel.app/",
+  }
+
 ];
