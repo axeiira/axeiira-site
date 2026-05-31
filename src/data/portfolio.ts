@@ -9,7 +9,7 @@ export const profile = {
   currently:
     "working across ai, data science, and devops while studying computer engineering at institut teknologi sepuluh nopember.",
   email: "mailto:ramaprawira727@gmail.com",
-  github: "https://github.com/ramaprawira",
+  github: "https://github.com/axeiira",
   cv: "/cv.pdf",
 };
 

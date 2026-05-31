@@ -97,13 +97,31 @@ function App() {
         </Section>
 
         <footer className="flex justify-center gap-5 pt-2 text-muted">
-          <a href={profile.email} aria-label="email" className="transition hover:text-primary">
+          <a
+            href={profile.email}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="email"
+            className="transition hover:text-primary"
+          >
             <FiMail aria-hidden="true" />
           </a>
-          <a href={profile.github} aria-label="github" className="transition hover:text-primary">
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="github"
+            className="transition hover:text-primary"
+          >
             <FiGithub aria-hidden="true" />
           </a>
-          <a href={profile.cv} aria-label="view cv" className="transition hover:text-primary">
+          <a
+            href={profile.cv}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="view cv"
+            className="transition hover:text-primary"
+          >
             <FiFileText aria-hidden="true" />
           </a>
         </footer>
