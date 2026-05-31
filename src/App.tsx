@@ -1,5 +1,13 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { FiFileText, FiGithub, FiMail, FiMapPin, FiMoon, FiSun } from "react-icons/fi";
+import {
+  FiArrowUpRight,
+  FiFileText,
+  FiGithub,
+  FiMail,
+  FiMapPin,
+  FiMoon,
+  FiSun,
+} from "react-icons/fi";
 import { profile, projects, work } from "./data/portfolio";
 
 type Theme = "dark" | "light";
@@ -18,6 +26,21 @@ function Section({
       </h2>
       {children}
     </section>
+  );
+}
+
+function InlineLink({ href, label }: { href: string; label: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="mt-2 inline-flex w-fit items-center gap-1 text-xs text-muted transition hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-bg"
+      aria-label={label}
+    >
+      view
+      <FiArrowUpRight aria-hidden="true" />
+    </a>
   );
 }
 
@@ -75,6 +98,7 @@ function App() {
                 <div>
                   <h3 className="font-bold text-primary">{item.company}</h3>
                   <p className="mt-1 text-secondary">{item.role}</p>
+                  <InlineLink href={item.href} label={`view ${item.company}`} />
                 </div>
                 <p className="pt-0.5 text-right text-xs text-muted">{item.period}</p>
               </article>
@@ -89,6 +113,7 @@ function App() {
                 <div>
                   <h3 className="font-bold text-primary">{project.name}</h3>
                   <p className="mt-1 text-secondary">{project.description}</p>
+                  <InlineLink href={project.href} label={`view ${project.name}`} />
                 </div>
                 <p className="pt-0.5 text-right text-xs text-muted">{project.year}</p>
               </article>

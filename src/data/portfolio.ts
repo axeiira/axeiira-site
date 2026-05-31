@@ -18,16 +18,19 @@ export const work = [
     company: "pt mioto agung mobilitas",
     role: "full-stack developer intern",
     period: "2025",
+    href: "https://www.mioto.io/",
   },
   {
     company: "mage x",
     role: "front-end web developer",
     period: "2024",
+    href: "https://www.instagram.com/mage_its/",
   },
   {
     company: "lab miot",
     role: "basic programming practicum assistant",
     period: "2024",
+    href: "https://miot-lab.vercel.app/",
   },
 ];
 
@@ -36,15 +39,18 @@ export const projects = [
     name: "indonesian stock news automation",
     description: "automated stock news sentiment workflow using n8n and a fine-tuned indobert model.",
     year: "2025",
+    href: "https://docs.google.com/spreadsheets/d/1R7fTF4ouIrS4zhekJMBz1gcqBB5Gq66uDjRsbYQ-WGg/edit?usp=sharing",
   },
   {
     name: "autoreps",
     description: "ai-powered squat correction app using mediapipe pose landmarks and real-time feedback.",
     year: "2024",
+    href: "https://github.com/axeiira/autoreps",
   },
   {
     name: "pneumonia classification",
     description: "web-based x-ray pneumonia detection system built with python, tensorflow, and tensorflow.js.",
     year: "2024",
+    href: "https://github.com/axeiira/pneumonia-web",
   },
 ];
