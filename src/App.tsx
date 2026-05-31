@@ -122,18 +122,20 @@ function AnimatedName({ name, alias }: { name: string; alias: string }) {
 }
 
 function ProjectsCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const visibleProjects = [
-    projects[currentIndex],
-    projects[(currentIndex + 1) % projects.length],
-  ];
+  const projectsPerPage = 2;
+  const pageCount = Math.ceil(projects.length / projectsPerPage);
+  const [pageIndex, setPageIndex] = useState(0);
+  const visibleProjects = projects.slice(
+    pageIndex * projectsPerPage,
+    pageIndex * projectsPerPage + projectsPerPage,
+  );
 
   const showPreviousProjects = () => {
-    setCurrentIndex((index) => (index === 0 ? projects.length - 1 : index - 1));
+    setPageIndex((index) => (index === 0 ? pageCount - 1 : index - 1));
   };
 
   const showNextProjects = () => {
-    setCurrentIndex((index) => (index + 1) % projects.length);
+    setPageIndex((index) => (index + 1) % pageCount);
   };
 
   return (
@@ -151,27 +153,29 @@ function ProjectsCarousel() {
         ))}
       </div>
 
-      <div className="flex items-center justify-between pt-1 text-xs text-muted">
-        <button
-          type="button"
-          onClick={showPreviousProjects}
-          className="transition hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-bg"
-          aria-label="show previous projects"
-        >
-          prev
-        </button>
-        <p aria-label={`project set ${currentIndex + 1} of ${projects.length}`}>
-          {String(currentIndex + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
-        </p>
-        <button
-          type="button"
-          onClick={showNextProjects}
-          className="transition hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-bg"
-          aria-label="show next projects"
-        >
-          next
-        </button>
-      </div>
+      {pageCount > 1 && (
+        <div className="flex items-center justify-between pt-1 text-xs text-muted">
+          <button
+            type="button"
+            onClick={showPreviousProjects}
+            className="transition hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-bg"
+            aria-label="show previous projects"
+          >
+            prev
+          </button>
+          <p aria-label={`project page ${pageIndex + 1} of ${pageCount}`}>
+            {String(pageIndex + 1).padStart(2, "0")} / {String(pageCount).padStart(2, "0")}
+          </p>
+          <button
+            type="button"
+            onClick={showNextProjects}
+            className="transition hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-bg"
+            aria-label="show next projects"
+          >
+            next
+          </button>
+        </div>
+      )}
     </div>
   );
 }
