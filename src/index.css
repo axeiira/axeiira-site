@@ -9,7 +9,7 @@
   --secondary: #b7b2aa;
   --muted: #7f7972;
   --divider: #2a2725;
-  --accent: #c8a8ff;
+  --accent: #1abe9b;
 }
 
 :root[data-theme="light"] {
@@ -18,7 +18,7 @@
   --secondary: #4f4945;
   --muted: #817972;
   --divider: #ddd6cc;
-  --accent: #7d55c7;
+  --accent: #0c5545;
 }
 
 html,
