@@ -182,10 +182,16 @@ function ProjectsCarousel() {
 
 function App() {
   const [theme, setTheme] = useState<Theme>("dark");
+  const logoSrc = `${import.meta.env.BASE_URL}${theme === "dark" ? "logo-white.svg" : "logo.svg"}`;
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
-  }, [theme]);
+
+    const favicon = document.querySelector<HTMLLinkElement>("#favicon");
+    if (favicon) {
+      favicon.href = logoSrc;
+    }
+  }, [logoSrc, theme]);
 
   const toggleTheme = () => {
     setTheme((current) => (current === "dark" ? "light" : "dark"));
@@ -205,7 +211,13 @@ function App() {
       <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-[600px] flex-col justify-center gap-14">
         <header className="space-y-6 border-b border-divider pb-8">
           <div className="space-y-3">
-            <h1 className="leading-none">
+            <h1 className="flex items-center gap-3 leading-none">
+              <img
+                src={logoSrc}
+                alt=""
+                className="h-7 w-7 shrink-0"
+                aria-hidden="true"
+              />
               <AnimatedName name={profile.name} alias={profile.alias} />
             </h1>
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted">
