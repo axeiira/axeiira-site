@@ -12,7 +12,7 @@ export const profile = {
     company: "Leverate Group",
     href: "https://leverategroup.asia/",
     suffix:
-      "focusing on building across generative / agentic ai products, data science, and infrastructure.",
+      "focusing on developing generative / agentic ai products and workflow automation.",
   },
   email: "mailto:ramaprawira727@gmail.com",
   github: "https://github.com/axeiira",
