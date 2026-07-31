@@ -2,17 +2,17 @@ export const profile = {
   name: "Rama Prawira Suryanto",
   alias: "axeiira",
   location: "jakarta, indonesia",
-  availability: "ai engineer intern at leverate group",
+  availability: "ai project manager at staffinc",
   bioLead: "computer engineering student focused on",
   bioHighlights: ["systems engineering", "data processing"],
   bioTail:
     "building automated infrastructure that turns data analysis into seamless user experiences.",
   currently: {
-    prefix: "working on-site as an ai engineer intern at",
-    company: "Leverate Group",
-    href: "https://leverategroup.asia/",
+    prefix: "working as an ai project manager at",
+    company: "Staffinc",
+    href: "https://staffinc.co",
     suffix:
-      "focusing on developing generative / agentic ai products and workflow automation.",
+      "implementing ai & automation in corporate strategy and internal workflow.",
   },
   email: "mailto:ramaprawira727@gmail.com",
   github: "https://github.com/axeiira",
@@ -21,6 +21,12 @@ export const profile = {
 };
 
 export const work = [
+  {
+    company: "leverate group",
+    role: "ai engineer intern",
+    period: "2026",
+    href: "https://leverategroup.asia/",
+  },
   {
     company: "pt mioto agung mobilitas",
     role: "full-stack developer intern",
